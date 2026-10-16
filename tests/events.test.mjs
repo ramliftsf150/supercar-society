@@ -9,3 +9,26 @@ test('rejects invalid slugs, unsafe URLs, impossible dates and unknown statuses'
 test('rejects backwards dates and same-day times',()=>{assert.equal(eventSchema.safeParse({...valid,end_date:'2026-10-14'}).success,false);assert.equal(eventSchema.safeParse({...valid,start_time:'22:00',end_time:'02:00'}).success,false);assert.equal(eventSchema.safeParse({...valid,start_time:'22:00',end_time:'02:00',end_date:'2026-10-16'}).success,true);});
 test('includes current and multi-day events until their last day',()=>{assert.equal(isPast(valid,'2026-10-15'),false);assert.equal(isPast(valid,'2026-10-16'),true);assert.equal(isPast({...valid,end_date:'2026-10-18'},'2026-10-17'),false);assert.equal(isPast({...valid,end_date:'2026-10-18'},'2026-10-19'),true);});
 test('formats venue-local times and date-only values without timezone shifts',()=>{assert.equal(timeLabel('00:30:00'),'12:30 AM');assert.equal(timeLabel('12:00'),'12:00 PM');assert.equal(timeLabel('23:15'),'11:15 PM');assert.equal(timeLabel(null),'');assert.equal(dateLabel('2026-10-15'),'October 15, 2026');});
+
+test('normalizes absent registration URLs to null for draft, published, and cancelled saves',()=>{
+ for(const status of ['draft','published','cancelled']) {
+  for(const registration_url of ['', '   ', '\t\n', '\u00a0', null, undefined]) {
+   const parsed=eventSchema.parse({...valid,status,registration_url});
+   assert.equal(parsed.registration_url,null);
+  }
+  const withoutUrl={...valid};delete withoutUrl.registration_url;
+  assert.equal(eventSchema.parse({...withoutUrl,status}).registration_url,null);
+ }
+});
+test('rejects malformed non-empty registration URLs',()=>{
+ for(const registration_url of ['not-a-url','https://','www.example.com','/register','javascript:alert(1)','ftp://example.com',42])
+  assert.equal(eventSchema.safeParse({...valid,registration_url}).success,false,String(registration_url));
+});
+test('accepts http and https registration URLs and trims surrounding whitespace',()=>{
+ for(const url of ['http://example.com/register','https://example.com/register?event=scs'])
+  assert.equal(eventSchema.parse({...valid,registration_url:`  ${url}  `}).registration_url,url);
+});
+
+test('normalizes the HTTP scheme to match database URL constraints',()=>{
+ assert.equal(eventSchema.parse({...valid,registration_url:'HTTPS://example.com/Register'}).registration_url,'https://example.com/Register');
+});

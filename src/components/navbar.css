@@ -1,0 +1,42 @@
+.navbar .nav-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 44px;
+  color: #c9c9c5;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.navbar .nav-instagram svg { flex-shrink: 0; }
+.navbar .nav-instagram:hover { color: #c7a35a; }
+.navbar .desktop-nav { white-space: nowrap; }
+@media (min-width: 701px) and (max-width: 1300px) {
+  .navbar .nav-tag { display: none; }
+  .navbar { gap: 24px; }
+  .navbar .desktop-nav { gap: 20px; }
+  .navbar .desktop-nav .nav-quote { margin-left: 0; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .navbar { gap: 16px; }
+  .navbar .brand-logo { width: 86px; }
+  .navbar .desktop-nav { gap: 10px; font-size: 9px; letter-spacing: .04em; }
+  .navbar .desktop-nav .nav-quote { padding-inline: 12px; }
+  .navbar .nav-instagram { font-size: 10px; gap: 6px; }
+}
+@media (max-width: 700px) {
+  .navbar .mobile-nav { max-height: calc(100svh - 82px); overflow-y: auto; }
+  .navbar .mobile-nav .nav-instagram {
+    display: flex;
+    width: 100%;
+    margin-top: 12px;
+    padding-block: 14px;
+    border-bottom: 0;
+    font-size: 14px;
+    gap: 10px;
+  }
+  .navbar .mobile-nav .nav-instagram svg { width: 20px; height: 20px; }
+}

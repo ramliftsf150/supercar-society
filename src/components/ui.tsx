@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-export function Arrow({ diagonal = false }: { diagonal?: boolean }) { return <span aria-hidden="true">{diagonal ? '↗' : '↗'}</span>; }
-export function Button({ href, children, secondary = false }: { href: string; children: React.ReactNode; secondary?: boolean }) { return <Link className={`button ${secondary ? 'button-outline' : ''}`} href={href}>{children}<Arrow /></Link>; }
+export function Button({ href, children, secondary = false }: { href: string; children: React.ReactNode; secondary?: boolean }) { return <Link className={`button ${secondary ? 'button-outline' : ''}`} href={href}>{children}</Link>; }
 export function Photo({ name, alt, className = '', priority = false, sizes = '(max-width: 700px) 100vw, 50vw' }: { name: string; alt: string; className?: string; priority?: boolean; sizes?: string }) { return <div className={`photo ${className}`}><Image src={`/images/scs/${name}.webp`} alt={alt} fill sizes={sizes} priority={priority} /></div>; }
 export function Label({ children }: { children: React.ReactNode }) { return <p className="eyebrow"><span />{children}</p>; }
 export function PartnersCTA() { return <section className="partners section-shell"><div><Label>Business / Collaborations</Label><h2>PUT YOUR BRAND<br />IN THE <span className="gold">DRIVER’S SEAT.</span></h2></div><div className="partners-copy"><p>Extraordinary cars. Real connections. Partner with us for vehicle displays, promotional appearances, and automotive experiences built around your brand.</p><Button href="/contact">GET A QUOTE</Button></div></section>; }

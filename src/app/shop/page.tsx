@@ -1,3 +1,5 @@
+import './shop.css';
+import { ScrollTheme } from '@/components/scroll-theme';
 import type { Metadata } from 'next';
 import { Label, Photo, Button } from '@/components/ui';
 import { ProductCard } from '@/components/product-card';
@@ -9,13 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function Shop() {
-  return <>
+  return <ScrollTheme className="shop-page" start={0.30} end={0.65}>
     <section className="shop-hero">
       <div className="shop-hero-copy">
         <Label>Super Car Society / Apparel</Label>
         <h1>WEAR THE<br /><span className="outline-text">SOCIETY.</span></h1>
         <p>For the drive. For the meet.<br />For everything in between.</p>
-        <a href="#collection" className="text-link">EXPLORE THE COLLECTION <span aria-hidden="true">↓</span></a>
+        <a href="#collection" className="text-link">EXPLORE THE COLLECTION</a>
       </div>
       <Photo name="campaign-hero" alt="Model wearing a black SCS shirt with a clearly visible gold chest logo in a blue supercar" priority sizes="(max-width: 700px) 100vw, 50vw" />
     </section>
@@ -53,5 +55,5 @@ export default function Shop() {
         <div className="campaign-signoff"><p>Take the society with you.</p><Button href="/">EXPLORE THE SOCIETY</Button></div>
       </div>
     </section>
-  </>;
+  </ScrollTheme>;
 }

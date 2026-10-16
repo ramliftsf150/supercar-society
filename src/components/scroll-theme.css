@@ -1,0 +1,19 @@
+/* Shared solid palette; ScrollTheme updates these properties per page. */
+.scroll-theme {
+  --theme-progress: 0;
+  --theme-bg: #080808;
+  --theme-text: #f5f5f5;
+  --theme-secondary: #c2c2c2;
+  --theme-border: #363636;
+  --theme-surface: #111110;
+  --theme-gold: #c7a35a;
+  --theme-button: #c7a35a;
+  --theme-outline: transparent;
+  --theme-outline-width: 0px;
+  --gold: var(--theme-gold);
+  --paper: var(--theme-text);
+  --muted: var(--theme-secondary);
+  --line: var(--theme-border);
+  background: var(--theme-bg);
+  color: var(--theme-text);
+}

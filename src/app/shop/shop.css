@@ -1,0 +1,45 @@
+/* Shop-only surfaces inherit the same scroll-interpolated palette as Home. */
+.shop-page :is(.shop-hero, .collection, .campaign) {
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  border-color: var(--theme-border);
+}
+.shop-page :is(.shop-notice, .product-card, .product-image) {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border-color: var(--theme-border);
+}
+.shop-page :is(.shop-hero-copy, .shop-notice, .collection, .campaign) {
+  -webkit-text-stroke: var(--theme-outline-width) var(--theme-outline);
+  paint-order: stroke fill;
+}
+.shop-page :is(p, figcaption, .shop-notice > span:last-child) { color: var(--theme-secondary); }
+.shop-page :is(h1, h2, h3) { color: var(--theme-text); }
+.shop-page :is(.eyebrow, .gold) { color: var(--theme-gold); }
+.shop-page .outline-text { -webkit-text-stroke: 1px var(--theme-secondary); }
+.shop-page .product-card { border: 1px solid var(--theme-border); }
+.shop-page .product-info { padding: 25px 20px 20px; }
+.shop-page .product-badge {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+}
+.shop-page .campaign-close { border-color: var(--theme-bg); }
+.shop-page .text-link { color: var(--theme-text); border-color: var(--theme-gold); }
+.shop-page .text-link:hover { color: var(--theme-gold); }
+.shop-page .button {
+  background: var(--theme-button);
+  color: #080808;
+  border-color: var(--theme-gold);
+  -webkit-text-stroke: 0;
+  transition: none;
+}
+.shop-page .button-outline {
+  background: transparent;
+  color: var(--theme-text);
+  border-color: var(--theme-border);
+  -webkit-text-stroke: var(--theme-outline-width) var(--theme-outline);
+}
+.shop-page .button:disabled { background: var(--theme-surface); color: var(--theme-secondary); }
+.shop-page .button:not(:disabled):hover { outline: 1px solid var(--theme-gold); }
+.shop-page :focus-visible { outline-color: var(--theme-outline); }

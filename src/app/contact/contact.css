@@ -1,0 +1,57 @@
+/* Contact uses fixed, solid section colors, independent of the scroll themes. */
+.contact-page {
+  --paper: #171715;
+  --muted: #55534d;
+  --gold: #806126;
+  --line: #d8d4ca;
+  background: #faf9f6;
+  color: #171715;
+  color-scheme: light;
+}
+.contact-page :is(.contact-intro, .contact-content) { background: #faf9f6; }
+.contact-page .outline-text { -webkit-text-stroke-color: #55534d; }
+.contact-page .contact-aside ul { color: #55534d; }
+.contact-page .quote-form { color: #171715; }
+.contact-page .quote-form label { color: #33312c; }
+.contact-page .quote-form legend span { color: #625e55; }
+.contact-page .quote-form :is(input:not([type=checkbox]), select, textarea) {
+  background: #fff;
+  color: #171715;
+  border-color: #c8c4ba;
+  color-scheme: light;
+}
+.contact-page .quote-form :is(input, textarea)::placeholder { color: #6b675e; opacity: 1; }
+.contact-page .quote-form select option { background: #fff; color: #171715; }
+.contact-page .service-options label { background: #fff; border-color: #c8c4ba; }
+.contact-page .service-options label:has(:checked) {
+  background: #eee6d5;
+  border-color: #806126;
+  color: #5e461b;
+}
+.contact-page .button {
+  background: #171715;
+  border-color: #171715;
+  color: #fff;
+  transition: none;
+}
+.contact-page .button:hover { background: #806126; border-color: #806126; }
+.contact-page .button:disabled { background: #e5e2da; border-color: #c8c4ba; color: #625e55; }
+.contact-page .text-link { color: #171715; border-color: #806126; }
+.contact-page .text-link:hover { color: #806126; }
+.contact-page :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.contact-page .general-contact {
+  --paper: #f5f5f3;
+  --muted: #c9c9c5;
+  --gold: #c7a35a;
+  --line: #303030;
+  background: #080808;
+  color: #f5f5f3;
+  border-top-color: #303030;
+  color-scheme: dark;
+}
+.contact-page .general-contact .text-link {
+  color: #f5f5f3;
+  border-color: #c7a35a;
+  overflow-wrap: anywhere;
+}
+.contact-page .general-contact .text-link:hover { color: #c7a35a; }

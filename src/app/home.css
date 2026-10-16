@@ -1,0 +1,54 @@
+/* All solid colors are updated by ScrollTheme from actual document scroll position. */
+.home-page :is(.culture-strip, .experience, .partners, .event-empty) {
+  background: var(--theme-surface);
+  border-color: var(--theme-border);
+}
+.home-page :is(.statement, .showcase, .merch, .event-section) {
+  background: var(--theme-bg);
+  border-color: var(--theme-border);
+}
+.home-page :is(.statement, .showcase, .experience, .merch, .event-section, .partners, .culture-strip) {
+  -webkit-text-stroke: var(--theme-outline-width) var(--theme-outline);
+  paint-order: stroke fill;
+}
+.home-page :is(p, .small-mark, .merch-caption, .showcase-grid figcaption, .showcase-grid figcaption span, .event-card p, .event-empty p) {
+  color: var(--theme-secondary);
+}
+.home-page :is(.eyebrow, .event-section .eyebrow, .gold) { color: var(--theme-gold); }
+.home-page .outline-text { -webkit-text-stroke: 1px var(--theme-secondary); }
+.home-page .event-empty { border-left: 3px solid var(--theme-gold); }
+.home-page :is(.event-card-copy, .merch-caption) { border-color: var(--theme-border); }
+.home-page .event-card-copy { border-bottom: 1px solid var(--theme-border); }
+.home-page .text-link { color: var(--theme-text); border-color: var(--theme-gold); }
+.home-page .text-link:hover { color: var(--theme-gold); }
+.home-page .button {
+  background: var(--theme-button);
+  border-color: var(--theme-gold);
+  color: #080808;
+  -webkit-text-stroke: 0;
+  transition: none;
+}
+.home-page .button:hover { border-color: var(--theme-gold); outline: 1px solid var(--theme-gold); }
+.home-page .button-outline { background: transparent; color: var(--theme-text); -webkit-text-stroke: var(--theme-outline-width) var(--theme-outline); }
+.home-page .button-outline:hover { background: var(--theme-surface); }
+.home-page :focus-visible { outline-color: var(--theme-outline); }
+/* Photographs retain their original pixels and locally dark readability overlays. */
+.home-page :is(.hero, .final-cta) {
+  --theme-bg: #080808;
+  --theme-text: #f5f5f5;
+  --theme-secondary: #d1d1d1;
+  --theme-gold: #c7a35a;
+  --theme-outline: #c7a35a;
+  --theme-outline-width: 0px;
+  --gold: #c7a35a;
+  --paper: #f5f5f5;
+  --muted: #d1d1d1;
+  color: #f5f5f5;
+  background: #080808;
+  -webkit-text-stroke: 0;
+}
+.home-page :is(.hero, .final-cta) .button:not(.button-outline) {
+  background: #c7a35a;
+  border-color: #c7a35a;
+  color: #080808;
+}
