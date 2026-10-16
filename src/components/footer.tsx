@@ -1,0 +1,4 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { site } from '@/lib/site';
+export function Footer(){return <footer className="footer section-shell"><div className="footer-top"><Link href="/" aria-label="Super Car Society home"><Image src="/images/scs/logo.png" alt="Super Car Society" width={150} height={103}/></Link><p>THE MACHINES. THE PEOPLE.<br/>THE CULTURE.</p><nav aria-label="Footer navigation"><Link href="/">Home</Link><Link href="/shop">Shop</Link><Link href="/contact">Contact</Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Super Car Society</span><div>{site.socials.length ? site.socials.map(s=><a key={s.label} href={s.href}>{s.label} ↗</a>) : <span>Instagram / TikTok / YouTube — coming soon</span>}</div><span>BUILT FOR THE OBSESSED.</span></div></footer>}

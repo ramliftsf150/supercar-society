@@ -1,0 +1,44 @@
+{
+  "campaign-hero": {
+    "source": "images spc/shirt pics/DSC06999-sharpen-standard-face-recovery-v3.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 322680
+  },
+  "campaign-shirt": {
+    "source": "images spc/shirt pics/DSC07041-sharpen-standard-face-recovery-v3.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 330000
+  },
+  "campaign-flatlay": {
+    "source": "images spc/shirt pics/DSC06979-sharpen-standard-face-recovery-v3.jpg",
+    "width": 2400,
+    "height": 1600,
+    "bytes": 393832
+  },
+  "campaign-group": {
+    "source": "images spc/shirt pics/DSC07127-unblur.jpg",
+    "width": 2400,
+    "height": 1600,
+    "bytes": 247336
+  },
+  "campaign-portrait": {
+    "source": "images spc/shirt pics/DSC06983-sharpen-standard-face-recovery-v3.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 380652
+  },
+  "campaign-detail": {
+    "source": "images spc/shirt pics/DSC07057-sharpen-standard-face-recovery-v3.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 636700
+  },
+  "campaign-door": {
+    "source": "images spc/shirt pics/DSC07048-sharpen-standard-face-recovery-v3.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 167382
+  }
+}
