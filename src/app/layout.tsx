@@ -5,6 +5,7 @@ import '@fontsource/manrope/400.css';
 import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/600.css';
 import './globals.css';
+import './events/events.css';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { Geist } from "next/font/google";

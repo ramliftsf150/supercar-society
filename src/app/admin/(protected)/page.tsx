@@ -1,0 +1,8 @@
+import Link from 'next/link';
+import {requireAdmin} from '@/lib/supabase/server';
+import {today,dateLabel,type EventRecord} from '@/lib/events';
+export default async function Dashboard(){const client=await requireAdmin();const date=today();const [upcoming,past,drafts,recent]=await Promise.all([
+ client.from('events').select('id',{head:true,count:'exact'}).eq('status','published').or(`end_date.gte.${date},and(end_date.is.null,start_date.gte.${date})`),
+ client.from('events').select('id',{head:true,count:'exact'}).eq('status','published').or(`end_date.lt.${date},and(end_date.is.null,start_date.lt.${date})`),
+ client.from('events').select('id',{head:true,count:'exact'}).eq('status','draft'),client.from('events').select('*').order('updated_at',{ascending:false}).limit(6)
+]);if([upcoming,past,drafts,recent].some(r=>r.error))throw new Error('Dashboard could not be loaded.');return <><div className="admin-heading"><div><span className="eyebrow">THE CONTROL ROOM</span><h1>DASHBOARD.</h1></div><Link className="button" href="/admin/events/new">CREATE EVENT ↗</Link></div><div className="admin-stats">{[['Upcoming events',upcoming.count],['Past events',past.count],['Draft events',drafts.count]].map(([name,count])=><div key={name}><span>{name}</span><strong>{count||0}</strong></div>)}</div><h2>RECENT EVENTS</h2><div className="admin-list">{(recent.data as EventRecord[]).map(e=><Link className="admin-row" key={e.id} href={`/admin/events/${e.id}/edit`}><strong>{e.title}</strong><span>{dateLabel(e.start_date)}</span><span className="status-badge">{e.status}</span><span>Edit ↗</span></Link>)}{!recent.data?.length&&<p>No events yet. Create your first event to get started.</p>}</div></>}

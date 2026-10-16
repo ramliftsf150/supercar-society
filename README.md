@@ -75,3 +75,7 @@ All 29 new photographs were reviewed against the six existing merch assets. The 
 | DSC07048 | Homepage portrait | Clean silhouette and distinct door-side pose |
 
 The shop headline stays in its own black panel for readability. The hero uses a 4:5 frame on desktop and mobile with positioning that preserves face and chest logo. Product and full-body photos use 2:3 frames; landscape group and mobile flat-lay images retain 3:2. Three homepage photos link into `/shop` via the existing section CTA. All below-fold campaign images use lazy Next.js Image loading and placement-specific responsive sizes; only the shop hero is prioritized. No product names, pricing, sizes, inventory, or checkout details were fabricated.
+
+## Phase 2 — Events
+
+See [Supabase setup and owner workflow](docs/SUPABASE_SETUP.md) for the SQL migration, private photo bucket, admin account provisioning, environment variables, and live acceptance checks. Public pages are `/events` and `/events/[slug]`; owner access begins at `/admin/login`. No public signup is available.

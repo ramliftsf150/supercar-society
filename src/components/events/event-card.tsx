@@ -1,0 +1,4 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import {type EventRecord,dateLabel,timeLabel} from '@/lib/events';
+export function EventCard({event}:{event:EventRecord}) {return <article className="event-card"><Link href={`/events/${event.slug}`}><div className="event-card-photo"><Image src={event.cover_image_url||'/images/scs/event-crowd.webp'} alt={event.title} fill sizes="(max-width: 700px) 90vw, 45vw" unoptimized={Boolean(event.cover_storage_path)}/></div><div className="event-card-copy"><span className="eyebrow">{event.event_type||'The Society'} {event.featured?' / FEATURED':''}</span><h3>{event.title}</h3><p>{dateLabel(event.start_date)}{event.end_date && event.end_date!==event.start_date?` – ${dateLabel(event.end_date)}`:''} {timeLabel(event.start_time)}</p><p>{[event.venue_name,event.city,event.state].filter(Boolean).join(' · ')}</p><span className="text-link">VIEW EVENT ↗</span></div></Link></article>}

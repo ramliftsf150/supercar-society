@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {eventSchema,slugify} from '../src/lib/event-validation.ts';
+import {isPast,timeLabel,dateLabel} from '../src/lib/events.ts';
+const valid={title:'Society meet',slug:'society-meet',short_description:'',description:'',start_date:'2026-10-15',end_date:null,start_time:null,end_time:null,venue_name:'',address:'',city:'',state:'',event_type:'',registration_url:null,featured:false,status:'draft'};
+test('accepts a minimal draft without invented event details',()=>assert.equal(eventSchema.safeParse(valid).success,true));
+test('normalizes readable URL slugs',()=>assert.equal(slugify('  Café & Cars / 2026!  '),'cafe-cars-2026'));
+test('rejects invalid slugs, unsafe URLs, impossible dates and unknown statuses',()=>{for(const patch of [{slug:'../admin'},{slug:'UPPER'},{registration_url:'javascript:alert(1)'},{registration_url:'ftp://example.com'},{start_date:'2026-02-30'},{status:'archived'},{title:''}])assert.equal(eventSchema.safeParse({...valid,...patch}).success,false,JSON.stringify(patch));});
+test('rejects backwards dates and same-day times',()=>{assert.equal(eventSchema.safeParse({...valid,end_date:'2026-10-14'}).success,false);assert.equal(eventSchema.safeParse({...valid,start_time:'22:00',end_time:'02:00'}).success,false);assert.equal(eventSchema.safeParse({...valid,start_time:'22:00',end_time:'02:00',end_date:'2026-10-16'}).success,true);});
+test('includes current and multi-day events until their last day',()=>{assert.equal(isPast(valid,'2026-10-15'),false);assert.equal(isPast(valid,'2026-10-16'),true);assert.equal(isPast({...valid,end_date:'2026-10-18'},'2026-10-17'),false);assert.equal(isPast({...valid,end_date:'2026-10-18'},'2026-10-19'),true);});
+test('formats venue-local times and date-only values without timezone shifts',()=>{assert.equal(timeLabel('00:30:00'),'12:30 AM');assert.equal(timeLabel('12:00'),'12:00 PM');assert.equal(timeLabel('23:15'),'11:15 PM');assert.equal(timeLabel(null),'');assert.equal(dateLabel('2026-10-15'),'October 15, 2026');});
